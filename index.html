@@ -1,105 +1,481 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Milon Miah এর অফিসিয়াল ওয়েবসাইট – ব্যক্তিগত ছবি ও পরিচিতি।" />
-  <title>Milon Miah | Official Website</title>
-  <link rel="icon" href="milon-miah.jpg" />
-
-  <!-- Schema for Google -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Milon Miah",
-    "url": "https://milonmiah.github.io/",
-    "image": "https://milonmiah.github.io/milon-miah.jpg",
-    "description": "Milon Miah এর অফিসিয়াল ব্যক্তিগত ওয়েবসাইট।",
-    "sameAs": [
-      "https://www.facebook.com/yourprofile",
-      "https://www.instagram.com/yourprofile"
-    ]
-  }
-  </script>
-
-  <style>
-    body {
-      font-family: 'Noto Sans Bengali', sans-serif;
-      background: #f8fafc;
-      color: #222;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    header {
-      background: #1e293b;
-      color: white;
-      padding: 2rem 1rem;
-      border-bottom: 4px solid #0ea5e9;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-    h2 {
-      font-size: 1.5rem;
-      color: #0ea5e9;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease-in-out;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    footer {
-      margin-top: 2rem;
-      padding: 1rem;
-      background: #0f172a;
-      color: #94a3b8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milon Miah - আমার ফটো গ্যালারী</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .profile-section h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .profile-section p {
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .photo-counter {
+            background: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .photo-gallery {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .photo-gallery h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            justify-items: center;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            aspect-ratio: 3/4;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .image-number {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .info-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .info-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            .profile-section h1 {
+                font-size: 2em;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-btn {
+                width: 200px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .photo-gallery {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Milon Miah</h1>
-    <h2>অফিসিয়াল ব্যক্তিগত ওয়েবসাইট</h2>
-  </header>
+    <div class="container">
+        <header>
+            <div class="profile-section">
+                <h1>Milon Miah</h1>
+                <p>আমার ব্যক্তিগত ফটো গ্যালারী</p>
+                <div class="photo-counter">মোট ছবি: ৫৯ টি</div>
+            </div>
+        </header>
 
-  <section>
-    <h3>আমার সম্পর্কে</h3><h2>যোগাযোগ</h2>
-<p>📧 Email ১: <a href="mailto:milon2526@gmail.com">milon2526@gmail.com</a></p>
-<p>📧 Email ২: <a href="mailto:milan7072@gmail.com">milan7072@gmail.com</a></p>
+        <!-- ছবির গ্যালারী সেকশন -->
+        <section class="photo-gallery">
+            <h2>📸 আমার সব ছবি সমূহ</h2>
+            <div class="gallery-container">
+                <!-- ছবি ১-১৪ -->
+                <div class="gallery-item">
+                    <span class="image-number">১</span>
+                    <img src="Milon (1).jpg" alt="Milon Miah Photo 1">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">২</span>
+                    <img src="Milon (2).jpg" alt="Milon Miah Photo 2">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">৩</span>
+                    <img src="Milon (3).jpg" alt="Milon Miah Photo 3">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">৪</span>
+                    <img src="Milon (4).jpg" alt="Milon Miah Photo 4">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">৫</span>
+                    <img src="Milon (5).jpg" alt="Milon Miah Photo 5">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">৬</span>
+                    <img src="Milon (6).jpg" alt="Milon Miah Photo 6">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">৭</span>
+                    <img src="Milon (7).jpg" alt="Milon Miah Photo 7">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">৮</span>
+                    <img src="Milon (8).jpg" alt="Milon Miah Photo 8">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">৯</span>
+                    <img src="Milon (9).jpg" alt="Milon Miah Photo 9">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১০</span>
+                    <img src="Milon (10).jpg" alt="Milon Miah Photo 10">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১১</span>
+                    <img src="Milon (11).jpg" alt="Milon Miah Photo 11">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১২</span>
+                    <img src="Milon (12).jpg" alt="Milon Miah Photo 12">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১৩</span>
+                    <img src="Milon (13).jpg" alt="Milon Miah Photo 13">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১৪</span>
+                    <img src="Milon (14).jpg" alt="Milon Miah Photo 14">
+                </div>
+                
+                <!-- ছবি ১৫-৫৯ (আপনার বাকি ছবিগুলোর জন্য) -->
+                <div class="gallery-item">
+                    <span class="image-number">১৫</span>
+                    <img src="Milon (15).jpg" alt="Milon Miah Photo 15">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১৬</span>
+                    <img src="Milon (16).jpg" alt="Milon Miah Photo 16">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১৭</span>
+                    <img src="Milon (17).jpg" alt="Milon Miah Photo 17">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১৮</span>
+                    <img src="Milon (18).jpg" alt="Milon Miah Photo 18">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">১৯</span>
+                    <img src="Milon (19).jpg" alt="Milon Miah Photo 19">
+                </div>
+                <div class="gallery-item">
+                    <span class="image-number">২০</span>
+                    <img src="Milon (20).jpg" alt="Milon Miah Photo 20">
+                </div>
+                <div class="gallery-item">
+    <span class="image-number">২১</span>
+    <img src="Milon (21).jpg" alt="Milon Miah Photo 21">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২২</span>
+    <img src="Milon (22).jpg" alt="Milon Miah Photo 22">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২৩</span>
+    <img src="Milon (23).jpg" alt="Milon Miah Photo 23">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২৪</span>
+    <img src="Milon (24).jpg" alt="Milon Miah Photo 24">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২৫</span>
+    <img src="Milon (25).jpg" alt="Milon Miah Photo 25">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২৬</span>
+    <img src="Milon (26).jpg" alt="Milon Miah Photo 26">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২৭</span>
+    <img src="Milon (27).jpg" alt="Milon Miah Photo 27">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২৮</span>
+    <img src="Milon (28).jpg" alt="Milon Miah Photo 28">
+</div>
+<div class="gallery-item">
+    <span class="image-number">২৯</span>
+    <img src="Milon (29).jpg" alt="Milon Miah Photo 29">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩০</span>
+    <img src="Milon (30).jpg" alt="Milon Miah Photo 30">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩১</span>
+    <img src="Milon (31).jpg" alt="Milon Miah Photo 31">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩২</span>
+    <img src="Milon (32).jpg" alt="Milon Miah Photo 32">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩৩</span>
+    <img src="Milon (33).jpg" alt="Milon Miah Photo 33">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩৪</span>
+    <img src="Milon (34).jpg" alt="Milon Miah Photo 34">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩৫</span>
+    <img src="Milon (35).jpg" alt="Milon Miah Photo 35">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩৬</span>
+    <img src="Milon (36).jpg" alt="Milon Miah Photo 36">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩৭</span>
+    <img src="Milon (37).jpg" alt="Milon Miah Photo 37">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩৮</span>
+    <img src="Milon (38).jpg" alt="Milon Miah Photo 38">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৩৯</span>
+    <img src="Milon (39).jpg" alt="Milon Miah Photo 39">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪০</span>
+    <img src="Milon (40).jpg" alt="Milon Miah Photo 40">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪১</span>
+    <img src="Milon (41).jpg" alt="Milon Miah Photo 41">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪২</span>
+    <img src="Milon (42).jpg" alt="Milon Miah Photo 42">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪৩</span>
+    <img src="Milon (43).jpg" alt="Milon Miah Photo 43">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪৪</span>
+    <img src="Milon (44).jpg" alt="Milon Miah Photo 44">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪৫</span>
+    <img src="Milon (45).jpg" alt="Milon Miah Photo 45">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪৬</span>
+    <img src="Milon (46).jpg" alt="Milon Miah Photo 46">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪৭</span>
+    <img src="Milon (47).jpg" alt="Milon Miah Photo 47">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪৮</span>
+    <img src="Milon (48).jpg" alt="Milon Miah Photo 48">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৪৯</span>
+    <img src="Milon (49).jpg" alt="Milon Miah Photo 49">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫০</span>
+    <img src="Milon (50).jpg" alt="Milon Miah Photo 50">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫১</span>
+    <img src="Milon (51).jpg" alt="Milon Miah Photo 51">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫২</span>
+    <img src="Milon (52).jpg" alt="Milon Miah Photo 52">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫৩</span>
+    <img src="Milon (53).jpg" alt="Milon Miah Photo 53">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫৪</span>
+    <img src="Milon (54).jpg" alt="Milon Miah Photo 54">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫৫</span>
+    <img src="Milon (55).jpg" alt="Milon Miah Photo 55">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫৬</span>
+    <img src="Milon (56).jpg" alt="Milon Miah Photo 56">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫৭</span>
+    <img src="Milon (57).jpg" alt="Milon Miah Photo 57">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫৮</span>
+    <img src="Milon (58).jpg" alt="Milon Miah Photo 58">
+</div>
+<div class="gallery-item">
+    <span class="image-number">৫৯</span>
+    <img src="Milon (59).jpg" alt="Milon Miah Photo 59">
+</div>
+            </div>
+        </section>
 
-<h2>আমার সোশ্যাল মিডিয়া</h2>
-<p>
-  🌐 <a href="https://www.facebook.com/share/1AGv9pA5iy/" target="_blank">Facebook প্রোফাইল</a><br>
-  📸 <a href="https://www.instagram.com/mr.milon1?igsh=azNtZnYwZnNxbzB3" target="_blank">Instagram প্রোফাইল</a>
-</p>
-    
-    <p>আমি মিলন মিয়া। এটি আমার অফিসিয়াল ওয়েবসাইট যেখানে আমি আমার ছবি, কাজ এবং ব্যক্তিগত তথ্য শেয়ার করি।</p>
-  </section>
+        <!-- ব্যক্তিগত তথ্য সেকশন -->
+        <section class="info-section">
+            <h2>👨‍💻关于我 (About Me)</h2>
+            <p><strong>নাম:</strong> Milon Miah</p>
+            <p><strong>ইমেইল:</strong> milonmiahd53@gmail.com</p>
+            <p><strong>ফেসবুক:</strong> Milon Miah</p>
+            <p><strong>ইনস্টাগ্রাম:</strong> milon_miah11</p>
+            <p><strong>লোকেশন:</strong> প্রবাস জীবন (বিদেশে বসবাস)</p>
+            
+            <div class="contact-links">
+                <a href="mailto:milonmiahd53@gmail.com" class="contact-btn">📧 ইমেইল করুন</a>
+                <a href="https://facebook.com/yourprofile" class="contact-btn">📘 ফেসবুক</a>
+                <a href="https://instagram.com/milon_miah11" class="contact-btn">📷 ইনস্টাগ্রাম</a>
+            </div>
+        </section>
 
-  <section class="gallery">
-<h2>আমার ছবি</h2>
-<img src="milon1.jpg" alt="Milon Miah Photo 1" width="200">
-<img src="milon2.jpg" alt="Milon Miah Photo 2" width="200">
-<img src="milon3.jpg" alt="Milon Miah Photo 3" width="200">
-  </section>
+        <!-- প্রবাস জীবন সম্পর্কে -->
+        <section class="info-section">
+            <h2>🌍 প্রবাস জীবন</h2>
+            <p>আমি বর্তমানে বিদেশে বসবাস করছি। প্রবাস জীবন বিভিন্ন সংস্কৃতি ও অভিজ্ঞতার সমন্বয় ঘটায়। এখানে আমি নতুন নতুন জিনিস শিখছি এবং বিভিন্ন মানুষের সাথে পরিচয় হচ্ছি।</p>
+        </section>
 
-  <footer>
-    <p>© 2025 Milon Miah | Designed for Google visibility</p>
-  </footer>
+        <footer>
+            <p>© 2024 Milon Miah - All Rights Reserved</p>
+            <p>মোট ছবি: ৫৯ টি | ওয়েবসাইট: https://milon2526.github.io</p>
+        </footer>
+    </div>
 </body>
 </html>
